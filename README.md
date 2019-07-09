@@ -77,9 +77,9 @@ my_ansible_collection
         │   ├── inventory
         │   ├── modules
         │   │   ├── __init__.py
-        │   │   ├── myos_func1.py
-        │   │   ├── myos_func2.py
-        │   │   └── myos_func3.py
+        │   │   ├── myos_module1.py
+        │   │   ├── myos_module2.py
+        │   │   └── myos_module3.py
         │   └── module_utils
         │       └── network
         │           └── myos
