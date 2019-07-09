@@ -1,0 +1,10 @@
+
+- name: "Run a module: {{ (file['path']|basename|splitext)[0] }}"
+  run_module:
+    module: "{{ collection_organization }}.{{ collection_name }}.{{ (file['path']|basename|splitext)[0] }}"
+  ignore_errors: True
+  register: result
+
+- name: Check the error message
+  assert:
+    that: "{{ 'ImportError' not in result['module_stderr']|default('') }}"
