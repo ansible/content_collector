@@ -3,7 +3,7 @@
   vars:
     ansible_source_directory: ./ansible-2.8.2
     destination_directory: ~/my_ansible_collection
-    collection_organization: contoso
+    collection_namespace: contoso
     collection_name: myos
     source_sub_directory: /network/nxos
   roles:

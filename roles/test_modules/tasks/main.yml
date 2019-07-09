@@ -5,8 +5,8 @@
 
 - name: Create a symbolic link
   file:
-    src: "{{ destination_directory }}/{{ collection_organization }}"
-    dest: "~/.ansible/collections/ansible_collections/{{ collection_organization }}"
+    src: "{{ destination_directory }}/{{ collection_namespace }}"
+    dest: "~/.ansible/collections/ansible_collections/{{ collection_namespace }}"
     state: link
 
 - name: Include the test module run file

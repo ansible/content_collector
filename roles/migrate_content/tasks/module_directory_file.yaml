@@ -8,7 +8,7 @@
   set_fact:
     basename: "{{ file['path']|basename }}"
     current: "^from ansible.module_utils{{ source_sub_directory|replace('/', '.') }}"
-    new: "from ansible_collections.{{ collection_organization }}.{{ collection_name }}.plugins.module_utils{{ source_sub_directory|replace('/', '.') }}"
+    new: "from ansible_collections.{{ collection_namespace }}.{{ collection_name }}.plugins.module_utils{{ source_sub_directory|replace('/', '.') }}"
 
 - name: "Update the import statements in {{ collection_parent }}/plugins/modules/{{ basename }}"
   replace:
