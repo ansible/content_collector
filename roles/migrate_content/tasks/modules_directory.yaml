@@ -1,0 +1,13 @@
+- name: Build a list of the files in the modules directory
+  find:
+    paths: "{{ ansible_source_directory }}/lib/ansible/modules/{{ source_sub_directory }}"
+    patterns: "*"
+  connection: local
+  register: module_source_files
+
+- name: Process each file
+  include: module_directory_file.yaml
+  loop: "{{ module_source_files['files'] }}"
+  loop_control:
+    loop_var: file
+    label: "{{ file['path'] }}"

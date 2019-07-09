@@ -1,0 +1,15 @@
+
+- name: Ensure certain required variables are defined
+  assert:
+    that: "{{ item }} is defined"
+  loop:
+  - ansible_source_directory
+  - destination_directory
+  - collection_name
+  - collection_organization
+
+- name: "Create the collection directory structure"
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ directories['collection'] }}"

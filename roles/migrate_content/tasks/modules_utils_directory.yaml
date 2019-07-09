@@ -1,0 +1,14 @@
+- name: Build a list of the files in the module utils directory
+  find:
+    paths: "{{ ansible_source_directory }}/lib/ansible/module_utils/{{ source_sub_directory }}"
+    patterns: "*"
+  connection: local
+  register: source_files
+
+- name: Copy each module utils directory file into the collection directory structure
+  copy:
+    src: "{{ item['path'] }}"
+    dest: "{{ collection_parent }}/plugins/module_utils/{{ source_sub_directory }}/"
+  loop: "{{ source_files['files'] }}"
+  loop_control:
+    label:  "{{ item['path']|basename }}"

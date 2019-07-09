@@ -1,0 +1,7 @@
+
+- include: "{{ include }}"
+  loop:
+  - modules_directory.yaml
+  - modules_utils_directory.yaml
+  loop_control:
+    loop_var: include

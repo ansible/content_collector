@@ -1,0 +1,15 @@
+collection_parent: "{{ destination_directory }}/{{ collection_organization}}/{{ collection_name }}"
+directories:
+  collection:
+  - "~/.ansible/ansible-collections"
+  - "{{ destination_directory }}"
+  - "{{ destination_directory}}/{{ collection_organization }}"
+  - "{{ collection_parent }}"
+  - "{{ collection_parent }}/plugins/modules"
+  - "{{ collection_parent }}/plugins/module_utils"
+  - "{{ collection_parent }}/plugins/filter"
+  - "{{ collection_parent }}/plugins/action"
+  - "{{ collection_parent }}/plugins/inventory"
+  - "{{ collection_parent }}/playbooks"
+  - "{{ collection_parent }}/docs"
+  - "{{ collection_parent }}/roles"

@@ -1,0 +1,17 @@
+- name: "Create the default collection directory"
+  file:
+    path: "~/.ansible/collections/ansible_collections"
+    state: directory
+
+- name: Create a symbolic link
+  file:
+    src: "{{ destination_directory }}/{{ collection_organization }}"
+    dest: "~/.ansible/collections/ansible_collections/{{ collection_organization }}"
+    state: link
+
+- name: Include the test module run file
+  include: run_module.yaml
+  loop: "{{ module_source_files['files'] }}"
+  loop_control:
+    loop_var: file
+    label: "{{ file['path']|basename }}"
