@@ -9,7 +9,7 @@ For an overview of Ansible collections, see the Ansible documentation. https://d
 Clone this repo
 
 ```
-https://github.com/ansible/content_collector.git
+git clone https://github.com/ansible/content_collector.git
 ```
 
 The content collector requires an Ansible distribution from which content will be mirgated.
