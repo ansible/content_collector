@@ -6,7 +6,7 @@
   - ansible_source_directory
   - destination_directory
   - collection_name
-  - collection_organization
+  - collection_namespace
 
 - name: "Create the collection directory structure"
   file:

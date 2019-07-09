@@ -24,7 +24,7 @@ Update the `site.yml` with the desired collection details:
 
 - `ansible_source_directory`: The location of the Ansible distribution from which content will be migrated (e.g. `./ansible-2.8.2`)
 - `destination_directory`: The destination directory in which the collection will be built. (e.g. `~/my_ansible_collection`)
-- `collection_organization`: The collection organization. (e.g. `contoso`)
+- `collection_namespace`: The collection namespace. (e.g. `contoso`)
 - `collection_name`: The name of the collection. (e.g. `myos`)
 - `source_sub_directory`: The source directory within `modules` and `module_utils` from which content will be migrated. (e.g. `/network/myos`)
 

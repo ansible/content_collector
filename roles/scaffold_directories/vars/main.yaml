@@ -1,9 +1,9 @@
-collection_parent: "{{ destination_directory }}/{{ collection_organization}}/{{ collection_name }}"
+collection_parent: "{{ destination_directory }}/{{ collection_namespace}}/{{ collection_name }}"
 directories:
   collection:
   - "~/.ansible/ansible-collections"
   - "{{ destination_directory }}"
-  - "{{ destination_directory}}/{{ collection_organization }}"
+  - "{{ destination_directory}}/{{ collection_namespace }}"
   - "{{ collection_parent }}"
   - "{{ collection_parent }}/plugins/modules"
   - "{{ collection_parent }}/plugins/module_utils"
