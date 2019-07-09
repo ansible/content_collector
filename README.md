@@ -1,6 +1,6 @@
 # Content Collector
 
-The Ansible content collector is an ansible playbook designed to assist in the creation of an ansible collection and migrate content from an Ansible distribution into that collection.
+The Ansible content collector is an Ansible playbook designed to assist in the creation of an Ansible collection and migrate content from an Ansible distribution into that collection.
 
 For an overview of Ansible collections, see the Ansible documentation. https://docs.ansible.com/
 
