@@ -1,0 +1,4 @@
+- name: Build the galaxy.yml file
+  copy:
+    content: "{{ metadata|to_nice_yaml }}"
+    dest: "{{ destination_directory }}/galaxy.yml"
