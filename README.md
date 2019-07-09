@@ -44,7 +44,7 @@ The following are optional and only used for the galaxy.yml file:
 - `collection_homepage`: The colection homepage URL (default='')
 - `collection_issues`: The collection issues URL (default='')
 
-Details for the galaxy metadata fields can be found here: `https://galaxy.ansible.com/docs/contributing/creating_collections.html#collection-metadata`
+Details for the galaxy metadata fields can be found here: https://galaxy.ansible.com/docs/contributing/creating_collections.html#collection-metadata
 
 #### Run the Ansible playbook:
 
