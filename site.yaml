@@ -1,10 +1,10 @@
 - hosts: localhost
   gather_facts: false
   vars:
-    ansible_source_directory: ./ansible-2.8.1
-    destination_directory: ~/github/collection_test
-    collection_organization: cidrblock
-    collection_name: utils
+    ansible_source_directory: ./ansible-2.8.2
+    destination_directory: ~/my_ansible_collection
+    collection_organization: contoso
+    collection_name: myos
     source_sub_directory: /network/nxos
   roles:
   - scaffold_directories
