@@ -1,0 +1,17 @@
+
+- name: "Copy {{ file['path'] }} into the collection directory structure"
+  copy:
+    src: "{{ file['path'] }}"
+    dest: "{{ collection_parent }}/plugins/module_utils"
+
+- name: Set a fact for the import statement changes
+  set_fact:
+    basename: "{{ file['path']|basename }}"
+    current: "^from ansible.module_utils{{ source_sub_directory|replace('/', '.') }}"
+    new: "from ansible_collections.{{ collection_namespace }}.{{ collection_name }}.plugins.module_utils{{ source_sub_directory|replace('/', '.') }}"
+
+- name: "Update the import statements in {{ collection_parent }}/plugins/module_utils/{{ basename }}"
+  replace:
+    path: "{{ collection_parent }}/plugins/module_utils/{{ basename }}"
+    regexp: "{{ current }}"
+    replace: "{{ new }}"

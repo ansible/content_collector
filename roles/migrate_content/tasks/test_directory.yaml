@@ -1,0 +1,30 @@
+- name: Build a list of the files in the test/units/modules directory
+  find:
+    paths:
+      - "{{ ansible_source_directory }}/test/units/modules/{{ source_sub_directory }}"
+    patterns: "*"
+  connection: local
+  register: source_files
+
+- name: Copy each test/units/modules directory into the collection directory structure
+  copy:
+    src: "{{ item['path'] }}"
+    dest: "{{ collection_parent }}/test/units/modules/{{ source_sub_directory }}/"
+  loop: "{{ source_files['files'] }}"
+  loop_control:
+    label:  "{{ item['path']|basename }}"
+
+- name: Build a list of the files in the modules directory
+  find:
+    paths:
+      - "{{ ansible_source_directory }}/lib/ansible/modules/{{ source_sub_directory }}"
+    patterns: "*"
+  connection: local
+  register: module_source_files
+
+- name: Process each potential module path checking for integration test
+  include_tasks: "include_process_integration_test_dirs.yaml"
+  loop: "{{ module_source_files['files'] }}"
+  loop_control:
+    label: "{{ item['path']|basename }}"
+
