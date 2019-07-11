@@ -1,6 +1,6 @@
 import re
 
-def frimports(file, frimports):
+def frimports(file, frimports, builtins):
     with open(file, "r") as source:
         contents = source.readlines()
     for line in contents:
@@ -9,7 +9,8 @@ def frimports(file, frimports):
         if cap:
             capdict = cap.groupdict()
             if capdict['file'] not in frimports:
-                frimports[capdict['file']] = None
+                if capdict['file'] not in builtins:
+                    frimports[capdict['file']] = None
     return frimports
 
 class FilterModule(object):

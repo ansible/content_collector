@@ -1,0 +1,14 @@
+builtins:
+- basic
+- six
+- common
+- compat
+- _text
+- parsing
+- splitter
+- ansible_release
+- distro
+- json_utils
+- pycompat24
+- facts
+- urls
