@@ -5,7 +5,7 @@
     destination_directory: ~/my_ansible_collection
     collection_namespace: contoso
     collection_name: myos
-    source_sub_directory: /network/nxos
+    source_sub_directory: /network/myos
   roles:
   - scaffold_directories
   - migrate_content
