@@ -1,4 +1,3 @@
-import q
 import re
 
 def frimports(file, frimports):
