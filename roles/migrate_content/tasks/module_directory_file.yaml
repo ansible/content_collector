@@ -4,7 +4,7 @@
     src: "{{ file['path'] }}"
     dest: "{{ collection_parent }}/plugins/modules"
 
-- name: Set a fact for the import statement changes
+- name: Set a fact for the from xxx import xxx statement changes
   set_fact:
     basename: "{{ file['path']|basename }}"
     current: "^from ansible.module_utils{{ source_sub_directory|replace('/', '.') }}"
@@ -15,3 +15,12 @@
     path: "{{ collection_parent }}/plugins/modules/{{ basename }}"
     regexp: "{{ current }}"
     replace: "{{ new }}"
+
+- name: "Parse remaining from and import statements"
+  set_fact:
+    frimports: "{{ file['path']|frimports(frimports|default({})) }}"
+
+- name: Include the prompt for frimport
+  include: handle_frimport.yml
+  with_dict: "{{ frimports }}"
+  when: not item['value'] or item['value'] in ['y', 'n', 'Y']
