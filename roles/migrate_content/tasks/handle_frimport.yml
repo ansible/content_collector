@@ -1,0 +1,36 @@
+- pause:
+    prompt: |
+
+      #########################################################################
+      Import found for module_utils/{{ item.key }}.py in {{ file['path']|basename }}:
+          y: Copy file and update import statements now
+          n: Do not copy file or update now
+          Y: Copy file and update import statements in all remaining files
+          N: Never copy file or update import statements
+  register: response
+  when: not item.value or item.value in ['n', 'y']
+
+- name: Update the frimports with the user's response
+  set_fact:
+    frimports: "{{ frimports|combine({item['key']: response['user_input']}, recursive=True) }}"
+  when: response is not skipped
+
+- name: Set a fact for the from/import statement
+  set_fact:
+    basename: "{{ file['path']|basename }}"
+    current: "ansible.module_utils.{{ item['key']  }}"
+    new: "ansible_collections.{{ collection_namespace }}.{{ collection_name }}.plugins.module_utils.{{ item['key'] }}"
+  when: frimports[item['key']] in ['y', 'Y']
+
+- name: "Update the import statements in {{ collection_parent }}/plugins/modules/{{ basename }}"
+  replace:
+    path: "{{ collection_parent }}/plugins/modules/{{ basename }}"
+    regexp: "{{ current }}"
+    replace: "{{ new }}"
+  when: frimports[item['key']] in ['y', 'Y']
+
+- name: Copy the imported file
+  copy:
+    src: "{{ ansible_source_directory }}/lib/ansible/module_utils/{{ item['key'] }}.py"
+    dest: "{{ collection_parent }}/plugins/module_utils"
+  when: frimports[item['key']] in ['y', 'Y']
