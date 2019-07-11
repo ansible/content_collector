@@ -1,0 +1,13 @@
+# Meant to be included via include_tasks for loops&includes not used directly
+
+- name: Stat the potential path
+  stat:
+    path: "{{ ansible_source_directory}}/test/integration/targets/{{ item['path']|basename|replace('.py','') }}"
+  register: st
+
+- name: Copy integration targets directory contents when applicable to collection
+  copy:
+    src: "{{ ansible_source_directory}}/test/integration/targets/{{ item['path']|basename|replace('.py','') }}"
+    dest: "{{ collection_parent }}/test/integration/targets/{{ item['path']|basename|replace('.py','') }}"
+  when: st['stat']['exists']
+

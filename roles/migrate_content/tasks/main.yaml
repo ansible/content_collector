@@ -2,6 +2,7 @@
 - include: "{{ include }}"
   loop:
   - modules_directory.yaml
-  - modules_utils_directory.yaml
+  - module_utils_directory.yaml
+  - test_directory.yaml
   loop_control:
     loop_var: include
