@@ -20,7 +20,7 @@ wget https://releases.ansible.com/ansible/ansible-latest.tar.gz
 tar -xvf ansible-latest.tar.gz
 ```
 
-#### Update the `site.yml` with the desired collection details:
+#### Update the `site.yaml` with the desired collection details:
 
 The following are required:
 
